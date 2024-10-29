@@ -1,5 +1,5 @@
 import { readdirSync, statSync, writeFileSync } from 'fs';
-import { join, basename } from 'path';
+import { join, basename, dirname } from 'path';
 
 // Function to get the file structure recursively
 function getFileStructure(dir, level = 0) {
@@ -33,13 +33,17 @@ function getFileStructure(dir, level = 0) {
 function createFileStructureFile(rootDir) {
     const structure = `${basename(rootDir)}/\n` + getFileStructure(rootDir);
     
-    // Write to file
-    writeFileSync(join(rootDir, 'fileStructure.txt'), structure, 'utf-8');
+    // Get the directory of the current script
+    const currentDir = dirname(new URL(import.meta.url).pathname);
+    
+    // Write to file in the current directory
+    const outputPath = join(currentDir, 'fileStructure.txt');
+    writeFileSync(outputPath, structure, 'utf-8');
     console.log(structure);
-    console.log(join(rootDir, 'fileStructure.txt'));
+    console.log(outputPath);
     console.log('fileStructure.txt created successfully!');
 }
 
 // Example usage
-const projectRoot = '../mike-dex';
+const projectRoot = '../secure-user-api'
 createFileStructureFile(projectRoot);
