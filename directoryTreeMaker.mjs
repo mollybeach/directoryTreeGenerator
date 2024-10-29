@@ -4,12 +4,11 @@ import { join, basename, dirname } from 'path';
 // Function to get the file structure recursively
 function getFileStructure(dir, level = 0) {
     let structure = '';
-
+    
     // Get all files and directories within the directory
     const items = readdirSync(dir);
     
     items.forEach((item, index) => {
-        // Create the correct path
         const fullPath = join(dir, item);
         const isLast = index === items.length - 1;
         
@@ -18,8 +17,11 @@ function getFileStructure(dir, level = 0) {
             // Add directory to structure
             structure += `${'│   '.repeat(level)}${isLast ? '└── ' : '├── '}${item}/\n`;
             
-            // Recursively add the directory contents
-            structure += getFileStructure(fullPath, level + 1);
+            // Skip recursion for .git and node_modules directories
+            if (item !== '.git' && item !== 'node_modules') {
+                // Recursively add the directory contents
+                structure += getFileStructure(fullPath, level + 1);
+            }
         } else {
             // Add file to structure
             structure += `${'│   '.repeat(level)}${isLast ? '└── ' : '├── '}${item}\n`;
