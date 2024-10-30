@@ -8,24 +8,33 @@ function getFileStructure(dir, level = 0) {
     // Get all files and directories within the directory
     const items = readdirSync(dir);
     
-    items.forEach((item, index) => {
+    // Separate and sort directories and files
+    const directories = items
+        .filter(item => statSync(join(dir, item)).isDirectory())
+        .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+    
+    const files = items
+        .filter(item => statSync(join(dir, item)).isFile())
+        .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+    
+    // Process directories first
+    directories.forEach((item, index) => {
         const fullPath = join(dir, item);
-        const isLast = index === items.length - 1;
+        const isLast = index === directories.length - 1 && files.length === 0;
         
-        // Check if the current item is a directory or file
-        if (statSync(fullPath).isDirectory()) {
-            // Add directory to structure
-            structure += `${'│   '.repeat(level)}${isLast ? '└── ' : '├── '}${item}/\n`;
-            
-            // Skip recursion for .git and node_modules directories
-            if (item !== '.git' && item !== 'node_modules') {
-                // Recursively add the directory contents
-                structure += getFileStructure(fullPath, level + 1);
-            }
-        } else {
-            // Add file to structure
-            structure += `${'│   '.repeat(level)}${isLast ? '└── ' : '├── '}${item}\n`;
+        // Add directory to structure
+        structure += `${'│   '.repeat(level)}${isLast ? '└── ' : '├── '}${item}/\n`;
+        
+        // Skip recursion for .git and node_modules directories
+        if (item !== '.git' && item !== 'node_modules') {
+            structure += getFileStructure(fullPath, level + 1);
         }
+    });
+    
+    // Then process files
+    files.forEach((item, index) => {
+        const isLast = index === files.length - 1;
+        structure += `${'│   '.repeat(level)}${isLast ? '└── ' : '├── '}${item}\n`;
     });
     
     return structure;

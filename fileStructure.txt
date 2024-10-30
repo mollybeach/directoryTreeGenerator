@@ -1,16 +1,25 @@
 secure-user-api/
-├── .env
 ├── .git/
-├── .gitignore
-├── README.md
 ├── config/
-│   └── config.json
-├── env.example
+│   ├── config.json
+│   └── db.js
+├── middleware/
+│   ├──  oauthAuth.js
+│   └── jwtAuth.js
 ├── migrations/
+│   └── 20241029210158-create-users-table.js
 ├── models/
-│   ├── User.js
-│   └── index.js
+│   ├── index.js
+│   └── User.js
 ├── node_modules/
+├── routes/
+│   ├── authRoutes.js
+│   └── userRoutes.js
+├── seeders/
+├── .env
+├── .gitignore
+├── env.example
+├── index.js
 ├── package-lock.json
 ├── package.json
-└── seeders/
+└── README.md
