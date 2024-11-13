@@ -1,63 +1,7 @@
 import { readdirSync, statSync, writeFileSync } from 'fs';
 import { join, basename, dirname } from 'path';
 import { projectRootPath } from './config.mjs';
-
-// Add this near the top of the file, after the imports
-const ignorePatterns = [
-    // Package managers and dependencies
-    'node_modules',
-    'bower_components',
-    'jspm_packages',
-    'package-lock.json',
-    'yarn.lock',
-    'vendor',
-
-    // Build and output directories
-    'dist',
-    'build',
-    'out',
-    '.min.js',
-    '.min.css',
-
-    // Environment and configuration
-    '.env',
-    '.pem',
-    '.secret',
-
-    // IDE and editor files
-    '.idea',
-    '.vscode',
-    '.swp',
-    '.swo',
-    '.DS_Store',
-    'Thumbs.db',
-
-    // Logs and coverage
-    'logs',
-    '.log',
-    'coverage',
-    '.nyc_output',
-
-    // Temporary files
-    'tmp',
-    'temp',
-    '.temp',
-    '.tmp',
-
-    // Python specific
-    'python3.9',
-    'site-packages',
-    'env',
-    '__pycache__',
-    'lib',
-    'include',
-    'bin',
-
-    // Localization and static
-    'LC_MESSAGES',
-    'locale',
-    'static'
-];
+import { ignorePatterns } from './ignorePatterns.mjs';
 
 function shouldSkipRecursion(path) {
     return ignorePatterns.some(pattern => 
