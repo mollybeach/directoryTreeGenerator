@@ -1,25 +1,161 @@
-secure-user-api/
+Memorizwift/
+├── .build/
+│   ├── artifacts/
+│   ├── checkouts/
+│   └── repositories/
+│   │   └── Tokamak-72f4064e/
+│   │   │   ├── hooks/
+│   │   │   │   ├── applypatch-msg.sample
+│   │   │   │   ├── commit-msg.sample
+│   │   │   │   ├── fsmonitor-watchman.sample
+│   │   │   │   ├── post-update.sample
+│   │   │   │   ├── pre-applypatch.sample
+│   │   │   │   ├── pre-commit.sample
+│   │   │   │   ├── pre-merge-commit.sample
+│   │   │   │   ├── pre-push.sample
+│   │   │   │   ├── pre-rebase.sample
+│   │   │   │   ├── pre-receive.sample
+│   │   │   │   ├── prepare-commit-msg.sample
+│   │   │   │   ├── push-to-checkout.sample
+│   │   │   │   ├── sendemail-validate.sample
+│   │   │   │   └── update.sample
+│   │   │   ├── info/
+│   │   │   │   └── exclude
+│   │   │   ├── objects/
+│   │   │   │   ├── info/
+│   │   │   │   └── pack/
+│   │   │   │   │   ├── pack-69933caeeaf2c4e69f77dcdf18ad57c7321f6822.idx
+│   │   │   │   │   ├── pack-69933caeeaf2c4e69f77dcdf18ad57c7321f6822.pack
+│   │   │   │   │   └── pack-69933caeeaf2c4e69f77dcdf18ad57c7321f6822.rev
+│   │   │   ├── refs/
+│   │   │   │   ├── heads/
+│   │   │   │   └── tags/
+│   │   │   ├── config
+│   │   │   ├── description
+│   │   │   ├── FETCH_HEAD
+│   │   │   ├── HEAD
+│   │   │   └── packed-refs
 ├── .git/
-├── config/
-│   ├── config.json
-│   └── db.js
-├── middleware/
-│   ├──  oauthAuth.js
-│   └── jwtAuth.js
-├── migrations/
-│   └── 20241029210158-create-users-table.js
-├── models/
-│   ├── index.js
-│   └── User.js
-├── node_modules/
-├── routes/
-│   ├── authRoutes.js
-│   └── userRoutes.js
-├── seeders/
-├── .env
-├── .gitignore
-├── env.example
-├── index.js
-├── package-lock.json
-├── package.json
+├── .github/
+│   └── workflows/
+│   │   └── deploy.yml
+├── Memorizwift/
+│   ├── Assets.xcassets/
+│   │   ├── AccentColor.colorset/
+│   │   │   └── Contents.json
+│   │   ├── AppIcon.appiconset/
+│   │   │   └── Contents.json
+│   │   ├── Image.imageset/
+│   │   │   ├── Contents.json
+│   │   │   └── MVVM.png
+│   │   └── Contents.json
+│   ├── Preview Content/
+│   │   └── Preview Assets.xcassets/
+│   │   │   └── Contents.json
+│   ├── .DS_Store
+│   ├── AspectVGrid.swift
+│   ├── Cardify.swift
+│   ├── CardView.swift
+│   ├── EmojiMemoryGame.swift
+│   ├── EmojiMemoryGameView.swift
+│   ├── FlyingNumber.swift
+│   ├── MemorizwiftApp.swift
+│   ├── MemoryGame.swift
+│   └── Pie.swift
+├── Memorizwift.xcodeproj/
+│   ├── project.xcworkspace/
+│   │   ├── xcshareddata/
+│   │   │   ├── swiftpm/
+│   │   │   │   └── configuration/
+│   │   │   └── IDEWorkspaceChecks.plist
+│   │   ├── xcuserdata/
+│   │   │   └── mollybeach.xcuserdatad/
+│   │   │   │   └── UserInterfaceState.xcuserstate
+│   │   └── contents.xcworkspacedata
+│   ├── xcshareddata/
+│   │   └── xcschemes/
+│   │   │   └── Memorizwift.xcscheme
+│   ├── xcuserdata/
+│   │   └── mollybeach.xcuserdatad/
+│   │   │   ├── xcdebugger/
+│   │   │   │   └── Breakpoints_v2.xcbkptlist
+│   │   │   └── xcschemes/
+│   │   │   │   └── xcschememanagement.plist
+│   └── project.pbxproj
+├── MemorizwiftTests/
+│   └── MemorizwiftTests.swift
+├── MemorizwiftUITests/
+│   ├── MemorizwiftUITests.swift
+│   └── MemorizwiftUITestsLaunchTests.swift
+├── MemorizwiftWeb/
+│   ├── .build/
+│   │   ├── artifacts/
+│   │   ├── checkouts/
+│   │   └── repositories/
+│   │   │   └── Tokamak-72f4064e/
+│   │   │   │   ├── objects/
+│   │   │   │   │   └── info/
+│   │   │   │   └── refs/
+│   │   │   │   │   ├── heads/
+│   │   │   │   │   └── tags/
+│   ├── CardView.swift
+│   ├── EmojiMemoryGame.swift
+│   ├── index.html
+│   ├── MemoryGame.swift
+│   └── Package.swift
+├── Sources/
+│   └── MemorizwiftWeb/
+│   │   ├── main.swift
+│   │   └── Package.swift
+├── TokamakApp/
+│   ├── .build/
+│   │   ├── artifacts/
+│   │   ├── checkouts/
+│   │   └── repositories/
+│   │   │   └── Tokamak-72f4064e/
+│   │   │   │   ├── hooks/
+│   │   │   │   │   ├── applypatch-msg.sample
+│   │   │   │   │   ├── commit-msg.sample
+│   │   │   │   │   ├── fsmonitor-watchman.sample
+│   │   │   │   │   ├── post-update.sample
+│   │   │   │   │   ├── pre-applypatch.sample
+│   │   │   │   │   ├── pre-commit.sample
+│   │   │   │   │   ├── pre-merge-commit.sample
+│   │   │   │   │   ├── pre-push.sample
+│   │   │   │   │   ├── pre-rebase.sample
+│   │   │   │   │   ├── pre-receive.sample
+│   │   │   │   │   ├── prepare-commit-msg.sample
+│   │   │   │   │   ├── push-to-checkout.sample
+│   │   │   │   │   ├── sendemail-validate.sample
+│   │   │   │   │   └── update.sample
+│   │   │   │   ├── info/
+│   │   │   │   │   └── exclude
+│   │   │   │   ├── objects/
+│   │   │   │   │   ├── info/
+│   │   │   │   │   └── pack/
+│   │   │   │   │   │   ├── pack-69933caeeaf2c4e69f77dcdf18ad57c7321f6822.idx
+│   │   │   │   │   │   ├── pack-69933caeeaf2c4e69f77dcdf18ad57c7321f6822.pack
+│   │   │   │   │   │   └── pack-69933caeeaf2c4e69f77dcdf18ad57c7321f6822.rev
+│   │   │   │   ├── refs/
+│   │   │   │   │   ├── heads/
+│   │   │   │   │   └── tags/
+│   │   │   │   ├── config
+│   │   │   │   ├── description
+│   │   │   │   ├── FETCH_HEAD
+│   │   │   │   ├── HEAD
+│   │   │   │   └── packed-refs
+│   ├── Sources/
+│   │   ├── TokamakApp/
+│   │   │   └── App.swift
+│   │   └── TokamakAppLibrary/
+│   │   │   └── TokamakAppLibrary.swift
+│   ├── Tests/
+│   │   └── TokamakAppLibraryTests/
+│   │   │   └── TokamakAppLibraryTests.swift
+│   ├── .gitignore
+│   └── Package.swift
+├── .DS_Store
+├── index.html
+├── LectureNotes.md
+├── Package.swift
 └── README.md

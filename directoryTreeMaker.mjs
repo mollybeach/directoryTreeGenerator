@@ -1,5 +1,70 @@
 import { readdirSync, statSync, writeFileSync } from 'fs';
 import { join, basename, dirname } from 'path';
+import { projectRootPath } from './config.mjs';
+
+// Add this near the top of the file, after the imports
+const ignorePatterns = [
+    // Package managers and dependencies
+    'node_modules',
+    'bower_components',
+    'jspm_packages',
+    'package-lock.json',
+    'yarn.lock',
+    'vendor',
+
+    // Build and output directories
+    'dist',
+    'build',
+    'out',
+    '.min.js',
+    '.min.css',
+
+    // Environment and configuration
+    '.env',
+    '.pem',
+    '.secret',
+
+    // IDE and editor files
+    '.idea',
+    '.vscode',
+    '.swp',
+    '.swo',
+    '.DS_Store',
+    'Thumbs.db',
+
+    // Logs and coverage
+    'logs',
+    '.log',
+    'coverage',
+    '.nyc_output',
+
+    // Temporary files
+    'tmp',
+    'temp',
+    '.temp',
+    '.tmp',
+
+    // Python specific
+    'python3.9',
+    'site-packages',
+    'env',
+    '__pycache__',
+    'lib',
+    'include',
+    'bin',
+
+    // Localization and static
+    'LC_MESSAGES',
+    'locale',
+    'static'
+];
+
+function shouldSkipRecursion(path) {
+    return ignorePatterns.some(pattern => 
+        path.includes(pattern) || 
+        path.endsWith(pattern)
+    );
+}
 
 // Function to get the file structure recursively
 function getFileStructure(dir, level = 0) {
@@ -25,8 +90,7 @@ function getFileStructure(dir, level = 0) {
         // Add directory to structure
         structure += `${'│   '.repeat(level)}${isLast ? '└── ' : '├── '}${item}/\n`;
         
-        // Skip recursion for .git and node_modules directories
-        if (item !== '.git' && item !== 'node_modules') {
+        if (!shouldSkipRecursion(fullPath)) {
             structure += getFileStructure(fullPath, level + 1);
         }
     });
@@ -56,5 +120,6 @@ function createFileStructureFile(rootDir) {
 }
 
 // Example usage
-const projectRoot = '../secure-user-api'
+const projectRoot = projectRootPath
 createFileStructureFile(projectRoot);
+

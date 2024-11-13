@@ -16,11 +16,11 @@ This project is a simple tool that recursively scans a directory and generates a
 
 ## Usage
 
-1. Navigate to the project directory.
-2. Modify the `projectRoot` variable in `pathMaker.js` to point to your desired directory:
-    ```javascript
-    const projectRoot = '../your-directory';
-    ```
+1. Modify the `projectRootPath` variable in `config.mjs` to point to your target directory:
+
+```
+const projectRoot = '../yourRepositoryName';
+```
 3. Run the script with Node.js:
     ```bash
     node pathMaker.js
